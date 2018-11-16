@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <!-- metadata elements -->
+	<title>The Basics of HTML and CSS</title>
+	  <style>
+
+      #main-doc {
+		width: 100%;
+		background: LightGray;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-template-rows: 150px 100%;
+		grid-gap: 10px;
+		grid-template-areas:
+		"navigation navigation"
+		"content content";
+		background-color: red;
+      }
+
+	  @media (min-width: 300px){
+		#main-doc{
+		grid-template-columns: auto auto;
+		grid-template-rows: 100%;
+		grid-template-areas:
+        "navigation content"
+        "navigation content"
+        "navigation content";
+        background-color: cyan;
+	  }
+  }
+	  
+	/* The navbar container */
+	  #navbar {
+		!overflow: hidden;
+		background-color: #333;
+		color: white;
+		!position: absolute;
+		grid-area: navigation;
+	  }
+
+      #navbar a {
+        color: white;
+       }
+
+	  #content {
+		grid-area: content;
+	  }
+
+/* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
+	  @media screen and (min-width: 800px) {
+		#navbar a {
+        float: none;
+        width: 100%;
+        position: relative;
+		}
+}
+
+header {
+	font-size: 20px;
+	text-align: center;
+}
+
+code {
+	background-color: #DCDCDC;
+	border: solid 1px #CBCBCB;
+}
+	  </style>
+  </head>
+
+  <body>
+    <main id="main-doc">
+      
+      <nav id="navbar">
+        <header>
+			<h1>Technical Documentation</h1>
+        </header>
+          <a class="nav-link" href="#html_markup">HTML Markup</a>
+          <a class="nav-link" href="#elements">Elements</a>
+          <a class="nav-link" href="#attributes">Attributes</a>
+          <a class="nav-link" href="#css">CSS</a> 
+          <a class="nav-link" href="#specificity">Specificity</a>
+      </nav>
+		
+		<nav id="content">
+			<header>
+				<h1>The Basics of HTML and CSS</h1>
+			</header>
+			<p>Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web.</p>
+		
+			<section id="html_markup" class="main-section">
+				<header>
+					<h2>HTML Markup</h2>
+				</header>
+				<p>HTML markup consists of several key components, including those called tags (and their attributes), character-based data types, character references and entity references. HTML tags most commonly come in pairs (like opening, closing Header tags), although some represent empty elements and so are unpaired. The first tag in such a pair is the start tag, and the second is the end tag (they are also called opening tags and closing tags).</p>
+				<p>Another important component is the HTML document type declaration, which triggers standards mode rendering.</p>
+				<p>The following is an example of the classic "Hello, World!" program:</p>
+				
+				<code>
+          <b>Bold text</b>
+				</code>
+			</section>
+			
+			<section id="elements" class="main-section">
+				<header>
+					<h2>Elements</h2>
+				</header>
+				<p>HTML documents imply a structure of nested HTML elements. These are indicated in the document by HTML tags, enclosed in angle brackets thus:</p>
+
+				<p>In the simple, general case, the extent of an element is indicated by a pair of tags: a "start tag" and "end tag". The text content of the element, if any, is placed between these tags.</p>
+
+				<p>Tags may also enclose further tag markup between the start and end, including a mixture of tags and text. This indicates further (nested) elements, as children of the parent element.</p>
+
+				<p>The start tag may also include attributes within the tag. These indicate other information, such as identifiers for sections within the document, identifiers used to bind style information to the presentation of the document, and for some tags such as the Image Tag used to embed images, the reference to the image resource.</p>
+				
+				<p>The following is an example of the a paragraph interrupted with line breaks:</p>
+				
+				<code>
+					<p>This <br> is a paragraph <br> with <br> line breaks</p>
+				</code>
+			</section>
+			
+			<section id="attributes" class="main-section">
+				<header>
+					<h2>Attributes</h2>
+				</header>
+				<p>Most of the attributes of an element are name-value pairs, separated by = and written within the start tag of an element after the element's name. The value may be enclosed in single or double quotes, although values consisting of certain characters can be left unquoted in HTML (but not XHTML). Leaving attribute values unquoted is considered unsafe. In contrast with name-value pair attributes, there are some attributes that affect the element simply by their presence in the start tag of the element, like the ismap attribute for the img element.</p>
+				<ul>
+					<li>The id attribute provides a document-wide unique identifier for an element.</li>
+					<li>The class attribute provides a way of classifying similar elements.</li>
+					<li>An author may use the style attribute to assign presentational properties to a particular element.</li>
+					<li>The title attribute is used to attach subtextual explanation to an element.</li>
+					<li>The lang attribute identifies the natural language of the element's contents, which may be different from that of the rest of the document.</li>
+				</ul>
+			</section>
+			
+			<section id="css" class="main-section">
+				<header>
+					<h2>CSS</h2>
+				</header>
+				<p>Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML.</p>
+				<p>Before CSS, nearly all presentational attributes of HTML documents were contained within the HTML markup. All font colors, background styles, element alignments, borders and sizes had to be explicitly described, often repeatedly, within the HTML. CSS lets authors move much of that information to another file, the style sheet, resulting in considerably simpler HTML.</p>
+				
+				<p>The following is an example to show that using font color tags or h1 style tags both produce the same effect:</p>
+				<code>
+					<h1><font color="red">Chapter 1.</font></h1>
+				</code>
+				<code>
+					<h1 style="color: red;">Chapter 1.</h1>
+				</code>
+			</section>
+			
+			<section id="specificity" class="main-section">
+				<header>
+					<h2>Specificity</h2>
+				</header>
+				<p>Specificity refers to the relative weights of various rules. It determines which styles apply to an element when more than one rule could apply. Based on specification, a simple selector (e.g. H1) has a specificity of 1, class selectors have a specificity of 1,0, and ID selectors a specificity of 1,0,0. Because the specificity values do not carry over as in the decimal system, commas are used to separate the "digits" (a CSS rule having 11 elements and 11 classes would have a specificity of 11,11, not 121).</p>
+				
+				<p>The following is an example of a stylesheet color of blue is being overridden by the inline style of green:</p>
+				<code>
+					<!DOCTYPE html>
+					<html>
+					  <head>
+						<meta charset="utf-8">
+						<style>
+						#xyz { color: blue; }
+						</style>
+					  </head>
+					  <body>
+						<p id="xyz" style="color: green;"> To demonstrate specificity </p>
+					  </body>
+					</html>
+				</code>
+			</section>
+	</nav>
+	</main>	
+  </body>
+</html>
